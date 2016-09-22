@@ -1,0 +1,8 @@
+
+
+nmap -p13 -O --packet-trace 24.25.192.57  // port 13 / OS Detection 
+					  // packet trace
+
+
+
+

@@ -1,0 +1,22 @@
+
+
+
+wget -m -p http://www.bob.com -o logfile
+
+(-m = mirroring, i.e. recursion & timestamping
+ -p = page requisites, i.e. stylesheets, inline imgs
+ -X = exclude directories list
+ -H = span hosts for recursive retrieval
+ -k = convert links to render locally
+ -r = recursive
+ -l = specify depth
+ -c = continue getting previous partial download
+ -o = output msgs to logfile
+ -a = append add'l msgs to existing logfile  
+ -U = specify User Agent String
+)
+
+i.e.
+
+wget http://ha/art/melvin.gif -U "Mozilla/4.0 (compatible; MSIE 6.0; Windows 98)"
+

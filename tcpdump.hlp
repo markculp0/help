@@ -1,0 +1,43 @@
+-q	// quick output w shorter lines
+
+-c #	// count of pkts
+
+-nn	// no host or port resolution
+
+-vv	// verbose
+
+-A	// ascii
+ 
+-x 	// hex
+
+//****** Filter by TCP Flag ******************//
+
+// extract only SYN's (no SYN-ACK's)
+tcpdump -r all.cap -w syn_only.cap 'tcp[13] & 0x12 = 0x02' 
+
+// extract SYN-ACK's 
+tcpdump -r all.cap -w syn_ack.cap 'tcp[13] & 0x12 = 0x12'
+
+// extract SYN's (includes SYN ACK's)
+tcpdump -r all.cap -w syn.cap 'tcp[13] & 0x02 = 0x02'	
+
+// extract only ACK's (no SYN-ACK's)
+tcpdump -r all.cap -w ack_only.cap 'tcp[13] & 0x10 = 0x10'
+
+//****** Filter by IP Proto Flag ******************//
+
+// extract all TCP packets to/from port 80
+tcpdump -r all.cap -w tcp.cap 'port 80 and ip[9] = 0x06'
+
+//****** Filter by IP Net Mask ********************//
+tcpdump -nnr all.cap 'net 128.241.217.0/24'
+
+//****** Filter by IP Addr ********************//
+tcpdump -nnr all.cap 'host 128.241.217.5'
+or
+tcpdump -nnr all.cap 'src host 128.241.217.5 or dst host 192.168.2.1'
+
+//**** Filter by Predefined Filter in Text File *******//
+tcpdump -nnr all.cap -F filter
+
+

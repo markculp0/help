@@ -1,0 +1,273 @@
+
+
+=========================================================
+Copy contents of One DB to another
+
+.output mydump  // my.db
+.dump 		// my.db
+.read mydump    // my2.db
+
+=========================================================
+
+Import CSVin
+------------
+.mode csv
+.import t1.csv t1
+
+
+// cmd ln
+sqlite3 -separator , test.db ".import test.csv sometable"
+
+  -separator \\t
+  -separator \|
+
+-------------
+
+// From Python
+
+import sqlite3
+
+cn = sqlite3.connect('my.db')
+
+c = cn.cursor()
+
+c.execute("insert into tbl1 values (5, 'Alice')")
+
+cn.commit()
+
+-------------
+
+// From R
+
+library("dplyr")
+
+my_db <- src_sqlite("my.db", create = F)
+
+src_tbls(my_db)  // show tables
+
+t1 <- tbl(my_db, "tbl1")
+or
+t2 <- tbl(my_db, sql("select * from t2"))
+
+t4 <- as.data.frame(t4)
+
+copy_to(my_db, t4, temporary=F)
+
+
+---
+
+// To R
+
+t3 <- as.data.frame(t3)
+
+copy_to(my_db, t3, temporary = F)
+
+
+=========================================================
+.help
+.quit / .q / .exit
+.table			// list tables, or
+  sqlite3 test.db "select * from sqlite_master"
+.schema ?table?		// show 
+
+
+
+=========================================================
+CREATE TABLE
+sqlite3 test.db  "create table t1 (t1key INTEGER
+                  PRIMARY KEY,data TEXT,num double,timeEnter DATE);"
+
+ALTER TABLE
+ALTER TABLE test1 ADD COLUMN bar TEXT(30);
+ALTER TABLE test1 ADD COLUMN baz TEXT NOT NULL DEFAULT 'baz';  // w default val
+
+
+RENAME TABLE
+alter table order_items rename to line_items;
+
+INSERT 
+sqlite3 test.db  "insert into t1 (data,num) values ('This is sample 			data',3);"
+
+UPDATE
+update contact set phone='417-111-2222' where contactid=1;
+=========================================================
+-------------------------------------------------------------------
+SQL Help
+-------------------------------------------------------------------
+// Create a table
+CREATE TABLE t1 (col1 INTEGER PRIMARY KEY, col2 TEXT, col3 TEXT);
+
+// Drop a table
+DROP TABLE t2;
+
+// Add a column
+ALTER TABLE t1 ADD col4 TEXT(30);
+
+// Add a DATE column
+ALTER TABLE t1 ADD col5 DATE;
+
+// Drop a column???
+
+// Import CSV file into existing table
+sqlite> .mode csv t2   (or)    .separator ,
+sqlite> .import a.csv t2
+
+-------------------------------------------------------------------
+
+// Export/Send output to a file
+.headers on
+.mode csv or .list (pipe sep)
+.output t1.csv
+select * from t1;
+.exit
+
+or
+
+// No header, pipe sep (default)
+sqlite> .output file.txt
+sqlite> select * from t1;
+
+-------------------------------------------------------------------
+
+// Select all
+SELECT * FROM t1;
+
+// Select cols WHERE w Aliases
+SELECT t.col1, t.col2 FROM t1 t WHERE t.col1 = 1;
+
+-------------------------------------------------------------------
+
+// Insert w specific columns named
+INSERT INTO t1 (col1, col2, col3) VALUES (6, 'Low', 'Bill');
+
+// Multi-row insert from another table
+INSERT INTO t2 (col1, col2) SELECT col1, col2 FROM t1;
+
+-------------------------------------------------------------------
+
+// Update table 
+UPDATE t1 SET col4 = "Nice guy." WHERE col1 = 3;
+
+-------------------------------------------------------------------
+
+// Delete data from a table
+DELETE FROM t1 WHERE col1 = 6;
+
+-------------------------------------------------------------------
+
+// Count rows
+SELECT COUNT(*) FROM t1;
+
+// Summing a row
+SELECT SUM(col1) FROM t1;
+
+// Return greatest value
+SELECT MAX(col1) FROM t1;
+
+// Group by and count
+SELECT col4, COUNT(*) FROM t1 GROUP BY col4;
+
+// Group by Having count > #
+SELECT col4, COUNT(*) FROM t1 GROUP BY col4 HAVING COUNT(*) > 2;
+
+
+// Eliminate duplicates
+SELECT DISTINCT col4 FROM t1;
+
+// Order by columns
+SELECT * FROM t1 ORDER BY col2, col3;
+
+// Order by column, descending order
+SELECT * FROM t1 ORDER BY col2 DESC;
+
+-------------------------------------------------------------------
+Predicates
+----------
+// Not equal
+SELECT * FROM t1 WHERE col1 <> 3;
+or 
+SELECT * FROM t1 WHERE col1 != 3;
+
+// Between inclusive (includes 2 and 4)
+SELECT * FROM t1 WHERE col1 BETWEEN 2 and 4;
+
+// IS NOT NULL
+SELECT * FROM t1 WHERE col4 IS NOT NULL;
+
+// Like %
+SELECT * FROM t1 WHERE col4 LIKE 'Jo%';
+
+// IN a set of values
+SELECT * FROM t1 WHERE col1 in (1,3);
+
+// Turn headers on, and specify column name w AS
+.header ON
+SELECT col1 AS "Nums" from t1;
+
+-------------------------------------------------------------------
+Joins
+-----
+// Inner Join ON, matching rows from both tables
+SELECT t1.col1 AS Num, t2.col2 AS LName FROM t1 INNER JOIN t2 
+   ON t1.col1 = t2.col1;
+
+// Inner Join USING, matching rows from both tables
+SELECT t1.col1 AS Num, t2.col2 AS LName FROM t1 INNER JOIN t2 
+   USING (col1);
+
+// Outer Join, gives all row from left table whether right table matches or not.
+SELECT t2.col1, t1.col2, t1.col3 FROM t2 LEFT OUTER JOIN t1 USING (col1);
+-------------------------------------------------------------------
+Date/Time Functions
+-------------------
+// Lists all dates in column 3 at 2 months prior
+SELECT date(col3,'-2 month') FROM t1;
+SELECT date(col3,'+2 day') FROM t1;
+SELECT date('now','start of month','+1 month','-1 day'); 
+
+// First Sunday of December of current year
+SELECT date('now','start of year','+11 months','weekday 0'); 
+// Second Tuesday of December of current year
+SELECT date('now','start of year','+11 months','+7 day','weekday 2');
+
+// Print datepart
+SELECT strftime('%Y',col3) from t1;	// year
+SELECT strftime('%m',col3) FROM t1;	// month
+SELECT strftime('%d',col3) FROM t1;	// day
+
+=========================================================
+Precompiled Binaries for Linux
+	sqlite3-3.5.9.bin.gz
+(184.33 KiB) 		A command-line program for accessing and modifying SQLite version 3.* databases. See the documentation for additional information.
+	tclsqlite-3.5.9.so.gz
+(192.65 KiB) 		Bindings for Tcl/Tk. You can import this shared library into either tclsh or wish to get SQLite database access from Tcl/Tk. See the documentation for details.
+	sqlite-3.5.9.so.gz
+(183.95 KiB) 		A precompiled shared-library for Linux without the TCL bindings.
+	sqlite3_analyzer-3.5.4.bin.gz
+(598.89 KiB) 		An analysis program for database files compatible with SQLite version 3.5.4 and later.f
+
+
+
+Precompiled Binaries For Windows
+	sqlite-3_5_9.zip
+(214.32 KiB) 		A command-line program for accessing and modifing SQLite databases. See the documentation for additional information.
+	tclsqlite-3_5_9.zip
+(283.87 KiB) 		Bindings for Tcl/Tk. You can import this shared library into either tclsh or wish to get SQLite database access from Tcl/Tk. See the documentation for details.
+	sqlitedll-3_5_9.zip
+(213.17 KiB) 		This is a DLL of the SQLite library without the TCL bindings. The only external dependency is MSVCRT.DLL.
+	sqlite3_analyzer-3_5_4.zip
+(540.03 KiB) 		An analysis program for database files compatible with SQLite version 3.5.4 and later.
+
+
+
+Source Code
+	sqlite-amalgamation-3_5_9.zip
+(807.20 KiB) 		This ZIP archive contains all preprocessed C code combined into a single source file (the amalgamation). This is the preferred way of acquiring the SQLite source code. It is suggested that you use this packing option unless you have a compelling reason to use one of the other packaging options below.
+	sqlite-amalgamation-3.5.9.tar.gz
+(1.09 MiB) 		A tarball containing the amalgamation together with an configure script and makefile for building it. This is the recommended source distribution for Unix platforms.
+	sqlite-3_5_9-tea.tar.gz
+(897.72 KiB) 		A tarball of proprocessed source code together with a Tcl Extension Architecture (TEA) compatible configure script and makefile.
+	sqlite-3.5.9.tar.gz
+(2.10 MiB) 		A tarball of the complete source tree for SQLite version 3.5.9 as extracted from the version control system. The individual source files require preprocessing (handled automatically by the Makefile) before they are ready to be incorporated into a working library.
+	sqlite-source-3_5_9.zip
+(837.01 KiB) 		This ZIP archive contains preprocessed C code for the SQLite library as individual source files. It is strongly recommended that the amalgamation above be used instead of this package.
