@@ -1,0 +1,82 @@
+
+ =======
+ unicode
+ =======
+
+	Alt-X			Alt-n		Word
+	-----			-----		----
+  ¡	printf '\Ua1\n'	 |	0161	|	alt-gr-!  
+
+  ¿	printf '\Ubf\n'  |	0191	|	alt-gr-?
+
+  Á	printf '\Uc1\n'  |	0193	|	ctl-' A
+
+  É	printf '\Uc9\n'	 |	0201	|	ctl-' E
+
+  Í	printf '\Ucd\n'	 |	0205	|	ctl-' I
+
+  Ñ	printf '\Ud1\n'  |	0209	|	ctl-shft-` N
+
+  Ó	printf '\Ud3\n'  |	0211	|	ctl-' O
+
+  Ö	printf '\Ud6\n'  |	0214	|	ctl-shft-; O
+
+  Ú	printf '\Uda\n'  |	0218	|	ctl-' U
+
+  Ü	printf '\Udc\n'  |	0220	|	ctl-shft-; U
+
+  á	printf '\Ue1\n'	 |	0225	|	ctl-' a
+
+  é	printf '\Ue9\n'  |	0233	|	ctl-' e
+
+  í	printf '\Ued\n'	 |	0237	|	ctl-' i
+
+  ñ	printf '\Uf1\n'  |	0241	|	ctl-shft-` n
+
+  ó	printf '\Uf3\n'	 |	0243	|	ctl-' o
+
+  ö	printf '\Uf6\n'	 |	0246	|	ctl-shft-; o
+
+  ß	printf '\Udf\n'	 |	0223	|	ctl-shft-6 s
+
+  ú	printf '\Ufa\n'	 |	0250	|	ctl-' u
+
+  ü	printf '\Ufc\n'  |	0252	|	ctl-shft-; u
+
+
+Mac
+---
+
+    Opt + e, then a = á
+
+    Opt + e, then e = é
+
+    Opt + e, then i = í
+
+    Opt + e, then o = ó
+
+    Opt + e, then u = ú
+
+    Opt + n, then n = ñ
+
+    Opt + 1 = ¡
+
+    Opt + shift + ? = ¿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
