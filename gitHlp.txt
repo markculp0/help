@@ -1,9 +1,9 @@
-## ===
-## git
-## ===
+ ===
+ git
+ ===
 
-### setup
-### -----
+ setup
+ -----
 
   git config --global user.name "Your Name Here"
 
@@ -18,8 +18,8 @@
   git remote add origin https://github.com/<username>/test-repo.git
 
 
-### add files, commit, push
-### -----------------------
+ add files, commit, push
+ -----------------------
 
   git add -A			// add all files in cur dir
 
@@ -28,8 +28,8 @@
   git push origin master		// push change
 
 
-### fetch, pull
-### -----------
+ fetch, pull
+ -----------
 
   git fetch remote master
 
