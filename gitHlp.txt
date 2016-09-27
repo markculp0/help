@@ -33,6 +33,8 @@
 
   git fetch remote master
 
+  git pull remote master
+
 
 
 
