@@ -35,6 +35,9 @@
 
   git pull remote master
 
+  // set local master to track github master
+  git branch --set-upstream-to=origin/master master
+
 
 
 
