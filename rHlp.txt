@@ -1,0 +1,15 @@
+
+======
+R Help
+======
+
+Factors
+-------
+// Convert fm factor to original type
+val <- levels(val)[val]
+
+// Convert fm char to date
+library(lubridate)
+val <- mdy(val)   // or ydm, etc.
+
+
