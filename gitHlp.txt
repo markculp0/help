@@ -1,9 +1,103 @@
- ===
- git
- ===
+##========
+# git Help
+##========
+##---------------------------
+## Main update cmds
+## ------Commit-Push---------
+git add -A
+git commit -m "changes"
+git push -u origin master
 
- setup
- -----
+## ------Pull Project--------
+git init
+git remote add origin https://github.com/markculp0/<repo>.git
+git fetch
+git pull origin master
+## --------------------------
+git rm --cached <filename>
+.gitignore // list filename
+
+## --------------------------------
+## My frequently used Ming Win dirs
+## --------------------------------
+~/Documents/code/r
+
+~/Documents/code/r/project/dttm
+
+~/Documents/code/r/project/help
+
+~/Documents/code/r/coursera/20170724_capstone/swiftkeyProject/splitMergeReduce
+
+~/Documents/code/r/coursera/20170724_capstone/swiftkeyProject/textPredict
+
+~/Documents/code/r/coursera/20170724_capstone/swiftkeyProject/mileStoneReport
+
+~/Documents/code/r/coursera/20170703_devDataProd/project/shinyMPG
+
+~/Documents/code/r/coursera/20170528_machLearn/project/weightLiftHAR
+
+~/Documents/code/r/coursera/20170410_regresModel/mtCars
+
+~/Documents/code/r/coursera/20170312_statInference/toothGrowth
+
+~/Documents/code/r/coursera/20170312_statInference/simulationEx
+
+~/Documents/code/r/coursera
+
+## =======================
+## Create a Projects page:
+## =======================
+## Create a fresh clone ( a new orphan branch )
+git clone https://github.com/markculp0/repo.git
+
+# Switch to clone dir
+cd repo
+
+## Chk if repo has master branch
+git branch
+
+## If not, create one (won't appear until 1st commit)
+git checkout --orphan master
+
+## Once master branch created, rm all files fm dir and index
+git rm -rf .
+
+## Add content and push (must verify email addr)
+echo "My Page" > index.html
+git add index.html
+git commit -a -m "First pages commit"
+git push origin master
+
+## GH Pages site will be avail at:
+https://<username>.github.io/<projName>
+
+https://markculp0.github.io/weightLiftHAR
+https://markculp0.github.io/weightLiftHAR/weightLiftHAR.html
+
+# ========================
+# Create a gh-pages branch
+# ========================
+## can publish from /docs folder on your master branch
+## Project Pages are kept in same repo as their project
+## URL will be https://<username>.github.io/<projName>
+
+git branch gh-pages
+
+--
+## to create a root gh-pages branch. 
+## This creates a "root branch", which is one without a previous history ()orphan.
+cd /path/to/repo-name
+git symbolic-ref HEAD refs/heads/gh-pages
+rm .git/index
+git clean -fdx
+echo "My GitHub Page" > index.html
+git add .
+git commit -a -m "First pages commit"
+git push origin gh-pages
+
+# ----- 
+# setup
+# -----
 
   git config --global user.name "Your Name Here"
 
@@ -17,9 +111,9 @@
 
   git remote add origin https://github.com/<username>/test-repo.git
 
-
- add files, commit, push
- -----------------------
+# -----------------------
+# add files, commit, push
+# -----------------------
 
   git add -A			// add all files in cur dir
 
@@ -27,24 +121,14 @@
 
   git push origin master		// push change
 
-
- fetch, pull
- -----------
+# -----------
+# fetch, pull
+# -----------
 
   git fetch remote master
 
   git pull remote master
 
-  // set local master to track github master
+  ## set local master to track github master
   git branch --set-upstream-to=origin/master master
-
-
-
-
-
-
-
-
-
-
 
