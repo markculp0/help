@@ -44,6 +44,16 @@ git rm --cached <filename>
 
 ~/Documents/code/r/coursera
 
+## ================
+## pages.github.com
+## ================
+# 1. goto repo
+# 2. click "Settings"
+# 3. under "Github Pages" select branch
+	of project to publish.
+
+https://markculp0.github.io/jsHelp/
+
 ## =======================
 ## Create a Projects page:
 ## =======================
