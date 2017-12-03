@@ -1,8 +1,101 @@
 
+====
+nmap
+====
 
-nmap -p13 -O --packet-trace 24.25.192.57  // port 13 / OS Detection 
-					  // packet trace
+nmap -h     // help
 
+nmap -V     // version
 
+TARGET SPECIFICATION:
+  
+  //  hostnames, IP addresses, networks
+  scanme.nmap.org; microsoft.com/24; 192.168.0.1; 10.0.0-255.1-254
 
+  -iL:        // list fm file
+  -iR         // random
+  --exclude:  // exclude host/network
+  
+  // port specification (-p for IP Proto also)
+  
+  -p:           // -p22/ -p22-25/ -p22-25,80,113
+  -PS/-PU ..  
+  
+HOST DISCOVERY:
+
+  -sL: List Scan 
+  -sn: Ping Scan, no port scan 
+  -Pn: No host probe/discovery
+
+  -PS/PA:   // TCP syn/ack
+  -PU:      // UDP
+  -PY:      // SCTP (Stream Ctl Transmiss Proto)
+  
+  -PE/PP/PM:    // ICMP echo, timestamp, netmask  
+  -PO1,2,4      // IP ping proto (default list)  
+  --traceroute  // Trace pkt route
+  -n:           // No DNS resolution
+  
+  nmap 192.168.1.1-5 -PS22-25,80,113 -v
+  
+  nmap -iR 10 -PU 53 -sn -vv   // Find DNS SERVER 
+  
+SCAN TECHNIQUES:
+
+  -sS:        // syn scan (default if privileged)
+  -sT:        // connect scan (default if unprivileged)
+  -sA:        // ack scan
+  
+  -sU:        // udp scan
+  -sO:        // IP protocol scan
+  
+  nmap 192.168.1.1 -sS -p80           // Web server
+  
+  nmap 192.168.1.35 -sO -p1,6,17,132  // IP Proto active
+                                      // icmp/ tcp/ udp/ sctp
+
+PORT SPECIFICATION AND SCAN ORDER:
+  
+  // Example:
+  -p22; -p1-65535; -p U:53,111,137,T:21-25,80,139,8080,S:9
+
+  --top-ports:   // Most common ports
+  -r:            // Scan ports consecutively 
+  
+SERVICE/VERSION DETECTION:
+
+  -sV:      // service/version info
+  
+  nmap 192.168.1.1 -sV -p80
+  
+SCRIPT SCAN:
+
+  -sC:      // Equivalent to --script=default
+  
+  --script=<Lua scripts>
+  
+  nmap 192.168.1.1 --script=http-title
+
+OS DETECTION:
+
+  -O:       // Enable OS detection
+  
+  nmap -O -Pn -v 192.168.1.1      // OS detect; no discovery
+
+OUTPUT:
+
+  -oN:      // normal
+  -oX:      // xml
+  -oG:      // grepable
+  
+  -v,vv,vvv   // verbose/ very/ very, very
+  
+  ndiff  out.xml out2.xml
+
+  xsltproc out.xml -o out.html
+
+MISC:
+
+  -6: Enable IPv6 scanning
+  
 
