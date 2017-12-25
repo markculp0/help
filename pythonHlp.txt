@@ -1,0 +1,39 @@
+
+
+# ===============
+# Data structures
+# ===============
+l = []		# List - versatile series
+t = ()		# Tuple - fast iterations
+d = {}		# Dictionary - key-val storage
+
+
+# -----
+# Lists
+# -----
+l.append(1)
+l.insert(0,0)
+l.append(2); l.append(3)
+l.pop(0)
+l2 = [4,5]; l.extend(l2)
+l.remove(5)	# [1, 2, 3, 4]
+
+
+
+# ===================================================
+# pickle module for persistent data structure storage
+# ===================================================
+
+# Persist a data structure
+import pickle
+d = { 1 : 'one', 2 : 'two' }
+f1 = open(r'mydict.pkl', 'wb')
+pickle.dump(d, f1)
+f1.close()
+
+# Reload data struct from file
+f2 = open(r'mydict.pkl', 'rb')
+d2 = pickle.load(f2)
+f2.close()
+
+
