@@ -1,7 +1,12 @@
+.gitignore
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
+<<<<<<< HEAD
 .gitignore
 help.Rproj
 
+=======
+help.Rproj
+>>>>>>> 5bcc88e226f7dec38705bdac5ab98ca12412546a
