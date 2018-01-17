@@ -1,0 +1,75 @@
+
+# ==============
+# Cassandra Help
+# ==============
+
+# -----
+# Admin
+# -----
+
+cassandra 		// start in background (kill proc)
+
+cassandra -f	// start in foreground (ctl-C)
+
+nodetool status
+
+nodetool flush <keyspace>   // flush memcache to disk
+
+# -----
+# CQLSH
+# -----
+
+describe cluster;
+
+help;
+
+help create_keyspace;
+
+describe keyspaces;
+
+describe keyspaces system;
+
+// Single node 
+create keyspace mydbSpc 
+  with replication = {'class' : 'SimpleStrategy',
+  'replication_factor' : 1 };
+
+// Two datacenters
+create keyspace mydbSpc2 
+  with replication = {'class' : 'NetworkTopologyStrategy',
+  'dc1' : 3, 'dc2' : 2 };  
+
+use mydbSpc;
+
+// Composite primary key
+// Partition = id
+create table myTbl1 (
+  id text,
+  datetime text,
+  descript text,
+  PRIMARY KEY (id, datetime)
+) with clustering order by (datetime desc);
+
+// Add column
+alter table myTbl1 add status text;
+
+# ------
+# Insert 
+# ------
+
+// Single row
+insert into myTbl1 (
+  id, datetime, descript, status
+) values ('111', '2017-01-01 09:22:30', 
+  'First', 'Good');
+  
+// Import CSV
+copy myTbl1 (
+  id, datetime, descript, status
+) from '/home/bub/file.csv'
+  with header = true and delimiter = '|';
+  
+  
+  
+
+
