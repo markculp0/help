@@ -43,33 +43,73 @@ use mydbSpc;
 
 // Composite primary key
 // Partition = id
-create table myTbl1 (
+CREATE TABLE myTbl1 (
   id text,
   datetime text,
   descript text,
   PRIMARY KEY (id, datetime)
-) with clustering order by (datetime desc);
+) with clustering order by (datetime desc);   // not default
 
 // Add column
-alter table myTbl1 add status text;
+ALTER TABLE myTbl1 ADD status text;
 
 # ------
 # Insert 
 # ------
 
 // Single row
-insert into myTbl1 (
+INSERT INTO myTbl1 (
   id, datetime, descript, status
-) values ('111', '2017-01-01 09:22:30', 
+) VALUES ('111', '2017-01-01 09:22:30', 
   'First', 'Good');
   
 // Import CSV
-copy myTbl1 (
+COPY myTbl1 (
   id, datetime, descript, status
-) from '/home/bub/file.csv'
-  with header = true and delimiter = '|';
+) FROM '/home/bub/file.csv'
+  WITH header = true and delimiter = '|';
   
-  
-  
+# ===================================  
+# How to query by non-indexed columns
+# ===================================
+# ---------------  
+# Secondary index
+# ---------------
+CREATE INDEX status_ndx   // No need to call by name
+  ON (status);            // No speed increase, but works
+
+SELECT * FROM myTbl1 WHERE status = 'Good';
+
+# ---
+#  or
+# ---
+
+# --------------------
+# Second table created
+# --------------------
+// composite primary key
+// status = part. key; datetime - makes rows unique
+CREATE TABLE mytbl1_by_status (
+  status text,
+  datetime timestamp,
+  descript text,
+  PRIMARY KEY (status, datetime)
+);
+
+# =======================
+# Composite partition key
+# =======================
+// good for time-series data
+// date is redundant but limits partition size
+CREATE TABLE 
+  id text,
+  date text,
+  datetime timestamp,
+  descript text,
+  PRIMARY KEY ((id, date), datetime)
+);
+
+
+
 
 
