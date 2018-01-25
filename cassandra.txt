@@ -15,6 +15,8 @@ nodetool status
 
 nodetool flush <keyspace>   // flush memcache to disk
 
+sstable2json /var/lib/cass../data/ks/tbl/..jb-#-Data.db
+
 # -----
 # CQLSH
 # -----
@@ -69,6 +71,15 @@ COPY myTbl1 (
 ) FROM '/home/bub/file.csv'
   WITH header = true and delimiter = '|';
   
+#-------
+# Update
+#-------
+
+UPDATE kSpc.tbl 
+  SET col2 = 'Bub', 
+      col3 = 'Smith',
+  WHERE col1 = 'H33';  
+  
 # ===================================  
 # How to query by non-indexed columns
 # ===================================
@@ -101,15 +112,13 @@ CREATE TABLE mytbl1_by_status (
 # =======================
 // good for time-series data
 // date is redundant but limits partition size
-CREATE TABLE 
+CREATE TABLE myTbl (
   id text,
   date text,
   datetime timestamp,
   descript text,
   PRIMARY KEY ((id, date), datetime)
 );
-
-
 
 
 
