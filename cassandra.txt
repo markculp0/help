@@ -7,7 +7,19 @@
 # Admin
 # -----
 
+sudo yum install cassandra
+
+service cassandra start 
+  or
+systemctl start cassandra
+
+chkconfig cassandra on 
+
+---
+
 cassandra 		// start in background (kill proc)
+
+or
 
 cassandra -f	// start in foreground (ctl-C)
 
