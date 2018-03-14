@@ -151,5 +151,32 @@ git push origin gh-pages
 # --------------
 
 git remote set-url origin https://github.com/<username>/test-repo.git
-  
+
+# -----------------------------------------  
+# Pushing to Github with ssh-authentication
+# -----------------------------------------
+
+1) Set username and email (if you did not do that before)
+
+git config --global user.name "your_username"
+git config --global user.email "your_email@example.com"
+
+2) Create SSH key
+
+ssh-keygen -t rsa -C "your_email@example.com" 
+
+2) Create SSH key
+
+ssh-keygen -t rsa -C "your_email@example.com" 
+
+In RStudio, go to menu Tools / Global options / Git SVN / View public key and copy the key to your Github account setting (Edit profile / SSH keys / Add SSH key).
+
+To check that ssh-authentication works, try to run
+
+ssh -T git@github.com
+
+3) Change remote.origin.url from HTTPS to HTTP 
+
+git config remote.origin.url git@github.com:your_username/your_project.git
+
 
