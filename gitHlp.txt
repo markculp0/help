@@ -142,3 +142,11 @@ git push origin gh-pages
   ## set local master to track github master
   git branch --set-upstream-to=origin/master master
 
+  
+#---------------  
+# Rename remote 
+# --------------
+
+  git remote set-url origin https://github.com/<username>/test-repo.git
+  
+
