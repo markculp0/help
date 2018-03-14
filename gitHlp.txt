@@ -4,6 +4,7 @@
 ##---------------------------
 ## Main update cmds
 ## ------Commit-Push---------
+git init
 git add -A
 git commit -m "changes"
 git push -u origin master
@@ -14,6 +15,8 @@ git remote add origin https://github.com/markculp0/<repo>.git
 git fetch
 git pull origin master
 ## --------------------------
+
+## Remove file from repo
 git rm --cached <filename>
 .gitignore // list filename
 
@@ -135,9 +138,9 @@ git push origin gh-pages
 # fetch, pull
 # -----------
 
-  git fetch remote master
+  git fetch origin master
 
-  git pull remote master
+  git pull origin master
 
   ## set local master to track github master
   git branch --set-upstream-to=origin/master master
@@ -147,6 +150,6 @@ git push origin gh-pages
 # Rename remote 
 # --------------
 
-  git remote set-url origin https://github.com/<username>/test-repo.git
+git remote set-url origin https://github.com/<username>/test-repo.git
   
 
