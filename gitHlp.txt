@@ -20,32 +20,6 @@ git pull origin master
 git rm --cached <filename>
 .gitignore // list filename
 
-## --------------------------------
-## My frequently used Ming Win dirs
-## --------------------------------
-~/Documents/code/r
-
-~/Documents/code/r/project/dttm
-
-~/Documents/code/r/project/help
-
-~/Documents/code/r/coursera/20170724_capstone/swiftkeyProject/splitMergeReduce
-
-~/Documents/code/r/coursera/20170724_capstone/swiftkeyProject/textPredict
-
-~/Documents/code/r/coursera/20170724_capstone/swiftkeyProject/mileStoneReport
-
-~/Documents/code/r/coursera/20170703_devDataProd/project/shinyMPG
-
-~/Documents/code/r/coursera/20170528_machLearn/project/weightLiftHAR
-
-~/Documents/code/r/coursera/20170410_regresModel/mtCars
-
-~/Documents/code/r/coursera/20170312_statInference/toothGrowth
-
-~/Documents/code/r/coursera/20170312_statInference/simulationEx
-
-~/Documents/code/r/coursera
 
 ## ================
 ## pages.github.com
