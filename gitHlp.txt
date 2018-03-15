@@ -4,6 +4,7 @@
 ##---------------------------
 ## Main update cmds
 ## ------Commit-Push---------
+git init
 git add -A
 git commit -m "changes"
 git push -u origin master
@@ -14,35 +15,39 @@ git remote add origin https://github.com/markculp0/<repo>.git
 git fetch
 git pull origin master
 ## --------------------------
+
+## ---------------------
+## Remove file from repo
+## ---------------------
 git rm --cached <filename>
-.gitignore // list filename
 
-## --------------------------------
-## My frequently used Ming Win dirs
-## --------------------------------
-~/Documents/code/r
-
-~/Documents/code/r/project/dttm
-
-~/Documents/code/r/project/help
-
-~/Documents/code/r/coursera/20170724_capstone/swiftkeyProject/splitMergeReduce
-
-~/Documents/code/r/coursera/20170724_capstone/swiftkeyProject/textPredict
-
-~/Documents/code/r/coursera/20170724_capstone/swiftkeyProject/mileStoneReport
-
-~/Documents/code/r/coursera/20170703_devDataProd/project/shinyMPG
-
-~/Documents/code/r/coursera/20170528_machLearn/project/weightLiftHAR
-
-~/Documents/code/r/coursera/20170410_regresModel/mtCars
-
-~/Documents/code/r/coursera/20170312_statInference/toothGrowth
-
-~/Documents/code/r/coursera/20170312_statInference/simulationEx
-
-~/Documents/code/r/coursera
+## ====================
+## Setup repo on server
+## ====================
+# ---------
+# On server
+# ---------
+cd /srv/git
+mkdir project.git
+cd project.git
+git init --bare
+# -------
+# On host
+# -------
+cd myproject
+git init
+git add .
+git commit -m 'initial commit'
+git remote add origin git@gitserver:/srv/git/project.git
+git push origin master
+# ---------------
+# On another host
+# ---------------
+git clone git@gitserver:/srv/git/project.git
+cd project
+vim README
+git commit -am 'add README file'
+git push origin master
 
 ## ================
 ## pages.github.com
@@ -135,10 +140,45 @@ git push origin gh-pages
 # fetch, pull
 # -----------
 
-  git fetch remote master
+  git fetch origin master
 
-  git pull remote master
+  git pull origin master
 
   ## set local master to track github master
   git branch --set-upstream-to=origin/master master
+
+  
+#---------------  
+# Rename remote 
+# --------------
+
+git remote set-url origin https://github.com/<username>/test-repo.git
+
+# -----------------------------------------  
+# Pushing to Github with ssh-authentication
+# -----------------------------------------
+
+1) Set username and email (if you did not do that before)
+
+git config --global user.name "your_username"
+git config --global user.email "your_email@example.com"
+
+2) Create SSH key
+
+ssh-keygen -t rsa -C "your_email@example.com" 
+
+2) Create SSH key
+
+ssh-keygen -t rsa -C "your_email@example.com" 
+
+In RStudio, go to menu Tools / Global options / Git SVN / View public key and copy the key to your Github account setting (Edit profile / SSH keys / Add SSH key).
+
+To check that ssh-authentication works, try to run
+
+ssh -T git@github.com
+
+3) Change remote.origin.url from HTTPS to HTTP 
+
+git config remote.origin.url git@github.com:your_username/your_project.git
+
 

@@ -90,6 +90,8 @@ OUTPUT:
   
   -v,vv,vvv   // verbose/ very/ very, very
   
+  nmap 192.168.1.0/24 -sn -T4 -oN scan.txt
+  
   ndiff  out.xml out2.xml
 
   xsltproc out.xml -o out.html
