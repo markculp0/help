@@ -21,6 +21,44 @@ git pull origin master
 ## ---------------------
 git rm --cached <filename>
 
+# ----- 
+# setup
+# -----
+
+  git config --global user.name "Your Name Here"
+
+  git config --global user.email "Your Email Here"
+
+  git config --list
+
+  mkdir test-repo; cd test-repo
+
+  git init 
+
+  git remote add origin https://github.com/<username>/test-repo.git
+
+# -----------------------
+# add files, commit, push
+# -----------------------
+
+  git add -A			// add all files in cur dir
+
+  git commit -m "file1 changed"
+
+  git push origin master		// push change
+
+# -----------
+# fetch, pull
+# -----------
+
+  git fetch origin master
+
+  git pull origin master
+
+  ## set local master to track github master
+  git branch --set-upstream-to=origin/master master
+
+
 ## ====================
 ## Setup repo on server
 ## ====================
@@ -109,43 +147,6 @@ echo "My GitHub Page" > index.html
 git add .
 git commit -a -m "First pages commit"
 git push origin gh-pages
-
-# ----- 
-# setup
-# -----
-
-  git config --global user.name "Your Name Here"
-
-  git config --global user.email "Your Email Here"
-
-  git config --list
-
-  mkdir test-repo; cd test-repo
-
-  git init 
-
-  git remote add origin https://github.com/<username>/test-repo.git
-
-# -----------------------
-# add files, commit, push
-# -----------------------
-
-  git add -A			// add all files in cur dir
-
-  git commit -m "file1 changed"
-
-  git push origin master		// push change
-
-# -----------
-# fetch, pull
-# -----------
-
-  git fetch origin master
-
-  git pull origin master
-
-  ## set local master to track github master
-  git branch --set-upstream-to=origin/master master
 
   
 #---------------  
