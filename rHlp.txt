@@ -12,9 +12,11 @@ Dates
 -----
 // Convert fm char to date
 library(lubridate)
+
 val <- mdy(val)   // or ydm, etc.
   or
 val <- as.Date(val)  // blt-in fn
+
 weekdays(val); julian(val); months(val)???
 lubridate::wday(d1) => 6 (friday)
 strptime(); as.POSIXlt; as.POSIXct
