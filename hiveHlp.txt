@@ -1,0 +1,91 @@
+
+# =========
+# Hive Help
+# =========
+
+# ----------------------
+# Show, Use, Describe DB
+# ----------------------
+show databases;
+
+describe database d1;   // desc
+
+use d1;
+
+create database d2;
+
+# -------------
+# Create table
+# -------------
+
+// Default internal table ('create external table' for external tbl)
+create table tbl1(col1 string, col2 array<string>, col3 string, col4 int) \
+  row format delimited \
+  fields terminated by ',' \
+  collection items terminated by ':' \
+  lines terminated by '\n' \
+  stored as textfile;
+
+
+// Append data to table from outside HDFS 
+// (omit 'local' if HDFS)
+load data local inpath '/home/bub/table1.txt' \
+  into table tbl1;
+
+drop table tbl1;
+
+# -----------------
+# Copy over data
+# ----------------
+
+// Create table for data already formated
+create table tbl2(ID string, city array<string>, country string) \
+  stored as textfile;
+
+// Copy data from one table to another (append data)
+insert into table tbl2 \
+  select col1, col2, col3 \
+  from tbl1;
+  
+// Overwrite data in table 
+overwrite into table tbl2 \
+  select col1, col2, col3 \
+  from tbl1;
+  
+# -----------------  
+# Insert data
+# -----------------
+
+insert into table9 values (1,'bob', 'LGL', 2012);
+
+# ------------
+# Rename table
+# ------------
+
+alter table table9 rename to table0;
+
+# -------------
+# Rename column
+# -------------
+
+// Chg 'col1' to 'id'
+alter table table0 change col1 id int;
+
+# -------------
+# Add column
+# -------------
+
+alter table table0 add columns (col6 int, col7 int);
+
+# -----------------------
+# Move column (lose data)
+# -----------------------
+
+// data in id column will be lost 
+alter table table0 change column id id2 int after col3;
+
+# ----------------
+
+set hive.metastore.warehouse.dir;   // show curr dir
+
+set hive.metastore.warehouse.dir=/user/hive/warehouse
