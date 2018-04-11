@@ -183,3 +183,8 @@ ssh -T git@github.com
 git config remote.origin.url git@github.com:your_username/your_project.git
 
 
+# ======================
+# Update Git for Windows
+# ======================
+
+git update-git-for-windows 
