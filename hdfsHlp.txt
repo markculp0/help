@@ -1,0 +1,22 @@
+
+# =========
+# HDFS Help
+# =========
+
+# -------------
+# List root dir
+# -------------
+hdfs dfs -ls /
+
+hdfs dfs -ls <args>
+
+# -----------
+# Remove file
+# -----------
+hdfs dfs -rm [-skipTrash] URI [URI ...]
+
+# ----------
+# Copy file
+# ----------
+hdfs dfs -put <localsrc> ... <dst>
+
