@@ -27,7 +27,12 @@ git rm --cached <filename>
 ## ---------------------
 git fetch --all
 
+# Reset local repo fm origin (cld lose changes!!!)
 git reset --hard origin/master
+
+# Reverses hard reset
+git reset --hard ORIG_HEAD
+
 =======
 # ----- 
 # setup
