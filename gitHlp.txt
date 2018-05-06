@@ -82,7 +82,10 @@ git reset --hard ORIG_HEAD
 cd /srv/git
 mkdir project.git
 cd project.git
-git init --bare
+sudo git init --bare
+sudo chown -R git:git project.git/
+sudo chmod -R 775  project.git/
+
 # -------
 # On host
 # -------
