@@ -1,0 +1,104 @@
+# ==================
+# NetBeans Tutorials
+# ==================
+
+# Run program at cmd line (from project "dist" folder)
+java -jar HelloWorldApp.jar
+java -jar MyApp.jar However we all feel zealous
+(C:\Program Files\Java\jdk1.7.0_51\bin\java -jar HelloWorldApp.jar)
+
+# Set PATH var:
+C:\Program Files\Java\jdk1.7.0_51\bin
+
+A Java Class Library project
+- MyLib (.\lib)
+
+Add Project JAR Files
+---------------------
+- Right-click the Libraries node for the MyApp project and 
+choose Add Project. 
+- The MyLib project's JAR file is added to the MyApp 
+project's classpath.
+
+Creating a Java Package and Class File
+--------------------------------------
+- Right-click the MyLib project node and choose New > Java Class
+- LibClass as the name for the new class
+- org.me.mylib in the Package field
+
+To add the arguments for the IDE to use when 
+running the application:
+------------------------
+- Right-click the MyApp project node, choose Properties
+- Select the "Run" node in the dialog's left pane
+
+Running the Application
+-----------------------
+- Right-click the MyApp project node and choose 
+Clean and Build
+- Run > Run Project (F6)
+
+Testing and Debugging the Application
+-------------------------------------
+Creating JUnit Tests:
+- Right-click the LibClass.java node in the Projects window,
+  and choose Tools > Create/Update Tests (Ctrl-Shift-U).
+- In LibClassTest.java, delete the body of the 
+  public void testAcrostic() method. 
+  
+(Reformat: Alt + Shift + F)
+
+Running JUnit Tests:
+- Select the MyLib project node and choose 
+  Run > Test Project (MyLib) or press Alt-F6.  
+- You can also run a single test file rather 
+  than testing the entire project. Select the 
+  "LibClass.java" tab in the Source Editor
+  and choose  Run > Test File (Ctl + F6).
+
+Debugging the Application
+-------------------------
+- In the LibClass.java file, go to the acrostic method 
+  and place the insertion point anywhere inside 
+  b.append(args[i].charAt(i));. Then press Ctrl-F8 
+  to set a breakpoint.
+- Select the MyApp project node and choose 
+  Debug > Debug Project (Ctrl-F5).
+- Press F7 (or choose Debug > Step Into) 
+  to step through the program  
+
+
+Building, Running, and Distributing the Application  
+---------------------------------------------------  
+Building the Application:
+- The main build command in the IDE is the 
+  "Clean and Build" command:
+  Run > Clean and Build Project (Shift-F11)  
+
+Distributing the Application to Other Users
+-------------------------------------------
+- Create a zip file that contains the application 
+  JAR file (MyApp.jar) and the accompanying lib folder 
+  that contains MyLib.jar.
+
+Making the Javadoc Available in the IDE
+---------------------------------------
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
