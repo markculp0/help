@@ -18,8 +18,8 @@ describe database d1;   // desc database d1;
 # -------------
 # Create table
 # -------------
-// Default internal table ('create external table' for external table)
-create table tbl1(col1 string, col2 array<string>, col3 string, col4 int) 
+// Default is internal table ('create external table' for external table)
+create table tbl1(col1 string, col2 array<string>, col3 string, col4 int, col5 float) 
   row format delimited
   fields terminated by ','
   collection items terminated by ':' 
@@ -96,7 +96,30 @@ alter table table0 add columns (col6 int, col7 int);
 // data in id column will be lost 
 alter table table0 change column id id2 int after col3;
 
-# ----------------
+# -----------------------
+# Unix cmds in Hive shell
+# -----------------------
+hive> !ls;             // local fs
+hive> !mkdir folder;
+hive> !rm -rf folder;
+hive> !pwd;
+
+# --------------
+# Hive variables
+# --------------
+hive> set year=2012;
+hive> select * from movie_table 
+    > where col4 = ${hiveconf:year};
+
+hive> set mov=titanic;
+hive> select * from movie_table 
+    > where col1 = '${hiveconf:mov}';
+
+# ----------
+# Properties
+# ----------
+
+set hive.cli.print.header = true;   // show headings
 
 set hive.metastore.warehouse.dir;   // show curr dir
 

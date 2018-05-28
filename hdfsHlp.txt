@@ -6,9 +6,9 @@
 # -------------
 # List root dir
 # -------------
-hdfs dfs -ls /
+hdfs dfs -ls /  |  hadoop fs -ls /
 
-hdfs dfs -ls <args>
+hdfs dfs -ls <args>  |  hadoop fs -ls <args>
 
 # -----------
 # Remove file
@@ -19,4 +19,10 @@ hdfs dfs -rm [-skipTrash] URI [URI ...]
 # Copy file
 # ----------
 hdfs dfs -put <localsrc> ... <dst>
+
+# ----------
+# Cat file
+# ----------
+hadoop fs -cat test.hql
+
 
