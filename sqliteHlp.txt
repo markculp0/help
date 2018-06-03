@@ -1,4 +1,20 @@
 
+# ===========
+# Sqlite Help
+# ===========
+
+=========================================================
+Data Types:
+-----------
+
+NULL
+INTEGER - 1, 2, 3, 4, 6, or 8 bytes 
+REAL - 8-byte IEEE floating point number
+TEXT - UTF-8
+BLOB - as entered
+
+date - use TEXT ISO8601 strings format 
+          ("YYYY-MM-DD HH:MM:SS.SSS").
 
 =========================================================
 Copy contents of One DB to another
