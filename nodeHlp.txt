@@ -1,0 +1,20 @@
+
+
+
+// install module
+npm install underscore
+
+// get help on module
+npm docs underscore
+
+// search for modules
+// or descriptions
+npm search irc
+
+// update npm
+sudo npm i -g npm
+
+// view module src:
+// run fm root of proj 
+// folder
+npm edit underscore
