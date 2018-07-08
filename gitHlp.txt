@@ -80,7 +80,7 @@ git reset --hard ORIG_HEAD
 # On server
 # ---------
 cd /srv/git
-mkdir project.git
+sudo mkdir project.git
 cd project.git
 sudo git init --bare
 sudo chown -R git:git project.git/
