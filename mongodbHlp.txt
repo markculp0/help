@@ -1,0 +1,59 @@
+--
+
+How to install mongodb and mongodb-server on fedora linux (verified on f16 & f17). All commands are intended to be run in a su session.
+
+1) make sure you have no mongodb installation lying around
+
+# yum erase mongodb
+# yum erase mongo-10gen  (if it is installed)
+
+2) install from fedora yum repository
+
+# yum --disablerepo=* --enablerepo=fedora,updates install mongodb mongodb-server
+
+3) start mongod (mongodb daemon)
+
+# systemctl start mongod.service
+
+4) verify mongod is running
+
+# systemctl status mongod.service
+# tail /var/log/mongodb/mongodb.log
+# nmap -p27017 localhost
+
+or running client
+
+# mongo
+MongoDB shell version: 2.0.2
+connecting to: test
+> db.test.save( { a: 1 } )
+> db.test.find()
+{ "_id" : ObjectId("4fdf28f09d16204d66082fa3"), "a" : 1 }
+
+5) customize configuration
+
+# vim /etc/mongodb.conf
+# systemctl restart mongod.service
+
+6) make mongodb service automatically start at boot
+
+# systemctl enable mongod.service
+
+Update for Fedora 18
+
+When started for the first time by systemd on a slow or loaded machine, mongod service might timeout before finishing its initialization, with systemd flagging the service as failed.
+
+Symptoms:
+
+# journalctl -xn
+
+-- Unit mongod.service has begun starting up.
+10:38:43 local mongod[24558]: forked process: 24560
+10:38:43 local mongod[24558]: all output going to: /var/log/mongodb/mongodb.log
+10:40:13 local systemd[1]: mongod.service operation timed out. Terminating.
+10:40:13 local systemd[1]: Failed to start High-performance, schema-free document-oriented database.
+-- Subject: Unit mongod.service has failed
+
+Very easy cure, restart the service:
+
+# systemctl restart mongod.service
