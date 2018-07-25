@@ -1,0 +1,20 @@
+
+====================
+Node.js Express Help
+====================
+
+install express web framework
+   $ npm install -g express-generator
+
+create skeleton app
+   $ express express-ie2
+
+change directory:
+   $ cd express_ie2
+
+install dependencies:
+   $ npm install
+
+run the app:
+   $ DEBUG=express-ie2:* npm start
+
