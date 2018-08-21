@@ -33,6 +33,9 @@ git reset --hard origin/master
 # Reverses hard reset
 git reset --hard ORIG_HEAD
 
+# Reset a merge
+git merge --abort
+
 =======
 # ----- 
 # setup
