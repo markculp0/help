@@ -1,0 +1,9 @@
+
+# R Package Help
+
+install.packages(c("devtools", "roxygen2", "testthat", "knitr"))
+
+library(devtools)
+has_devel()
+
+
