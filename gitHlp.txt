@@ -21,7 +21,6 @@ git pull origin master
 ## ---------------------
 git rm --cached <filename>
 
-<<<<<<< HEAD
 ## ---------------------
 ## Overwrite local repo
 ## ---------------------
@@ -74,7 +73,42 @@ git merge --abort
   ## set local master to track github master
   git branch --set-upstream-to=origin/master master
 
->>>>>>> cafdd7ea51da04e593a01a20a0015f8ebc074e1c
+
+## ===================
+## Branching workflows
+## ===================
+
+# Create a new branch
+git branch test
+
+# Switch to branch
+git checkout test
+
+# Merge branch to master
+git checkout master
+git merge test
+
+# Shortcut: Create & Switch
+git checkout -b test2
+
+# Branch history
+git log
+
+# List branches & status
+git branch -vv
+
+# Delete branch (-D force)
+git branch -d test2
+
+# View differences not staged
+git diff 
+
+# Show remote branches
+git show remote
+
+# Track remote branch
+git checkout --track origin/test3
+
 
 ## ====================
 ## Setup repo on server
