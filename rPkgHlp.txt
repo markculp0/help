@@ -6,4 +6,41 @@ install.packages(c("devtools", "roxygen2", "testthat", "knitr"))
 library(devtools)
 has_devel()
 
+devtools::create_package("~/path/pkgName")
+
+devtools::document() 
+(or Ctl-Shft-D)
+
+# Create a bundle, ie zip, tar.gz
+devtools::build()
+
+devtools::load_all()
+
+devtools::test()
+
+devtools::use_data()
+
+devtools::use_data_raw()
+
+devtools::use_rcpp()
+
+# Documentation R fn =======================
+
+#' Add together two numbers. 
+#'
+#' \code{add} returns the sum of all the values present in its arguments.
+#' 
+#' @param x A number. 
+#' @param y A number. 
+#' @return The sum of \code{x} and \code{y}. 
+#' @examples #' add(1, 1) 
+#' add(10, 1) 
+add <- function(x, y) {
+  x + y 
+}
+
+# ==========================================
+
+
+
 
