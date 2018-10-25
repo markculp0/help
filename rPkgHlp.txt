@@ -18,6 +18,38 @@ devtools::document()
 # Create a bundle, ie zip, tar.gz
 devtools::build()
 
+# Create a binary package, OS specific
+devtools::build(binary = TRUE)
+
+# Required pkgs
+install.packages(c("devtools", "roxygen2", "testthat", "knitr"))
+
+# Load lib; chk install
+library(devtools)
+has_devel()
+
+# Create package framework
+devtools::create("~/path/pkgName")
+devtools::create_package("~/path/pkgName")
+
+devtools::document() 
+(or Ctl-Shft-D)
+
+# Create a bundle, ie zip, tar.gz
+devtools::build()
+
+# Attach 
+devtools::load_all()
+
+devtools::test()
+
+# Store data in "R/sysdata.rda" file for internal use.
+devtools::use_data(object, <pkg>, internal = TRUE)
+
+devtools::use_data_raw()
+
+devtools::use_rcpp()
+
 # Attach 
 devtools::load_all()
 
