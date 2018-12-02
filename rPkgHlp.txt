@@ -55,6 +55,9 @@ devtools::load_all()
 
 devtools::test()
 
+# Use a package
+devtools::use_package("lubridate")
+
 # Store data in "R/sysdata.rda" file for internal use.
 devtools::use_data(object, <pkg>, internal = TRUE)
 
