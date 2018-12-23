@@ -46,3 +46,22 @@ tcpdump -nnr all.cap 'src host 128.241.217.5 or dst host 192.168.2.1'
 tcpdump -nnr all.cap -F filter
 
 
+//*** Examples ******//
+
+# Capture & write to file
+sudo tcpdump -nnttttAi enp0s9 -w heartbleed.pcap
+
+# Read https activity from file, grep 10 lines
+# either side of match & pipe to less
+tcpdump -nnttttAr heartbleed.pcap port 443 | 
+  grep -C 10 User-Agent |
+  less -Sr
+  
+# To replay capture over monitored interface
+sudo tcpreplay -t -i enp0s9 heartbleed.pcap
+
+
+
+
+
+
