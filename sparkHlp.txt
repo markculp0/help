@@ -1,0 +1,78 @@
+
+# ==========
+# Spark Help 
+# ==========
+
+
+# Read text file
+heights = spark.read.text("/data/heights.csv")
+poem = spark.read.text("/data/if.txt")
+
+# Read CSV file
+ht2 = spark.read.csv("/data/heights.csv", header=True,
+  mode="DROPMALFORMED", schema=schema)
+ht2.show()
+
+# Get df schema
+ht2.schema
+
+# New df w a DoubleType "age" column 
+ht3 = ht2.withColumn("age", ht2["age"].cast("double"))
+ht3.show()
+
+# Sum the age row
+ht3.groupBy().sum().collect()
+# [Row(sum(age)=49323.0)]
+
+# Count number of rows
+heights.count()
+
+# Get first row
+heights.first()
+
+# Filter out lines containing "black" 
+linesWithBlack = heights.filter(heights.value.contains("black"))
+
+# Chain transform or action (112)
+heights.filter(heights.value.contains("black")).count()
+
+# Import module
+from pyspark.sql.functions import *
+
+# Count words
+wordCount = poem.select(explode(split(poem.value, "\s+")).alias("word")).groupBy("word").count()
+
+# Run it ( [Row(word='gave', count=1), ...] )
+wordCount.collect()
+
+# Cache the dataframe
+wordCount.cache()
+# DataFrame[word: string, count: bigint]
+
+# Filter dataframe on column 'word'
+wordIf = wordCount.filter(wordCount.word.isin('If'))
+wordIf.show()
+
+# Get words occurring > 10 times ( 4 of them )
+wc10 = wordCount.filter("count > 10")
+wc10.count()
+
+# Get those 4 sorted in descending order
+wc10 = wordCount.filter("count > 10").sort(desc("count"))
+wc10.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
