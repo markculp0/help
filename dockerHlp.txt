@@ -12,9 +12,22 @@ docker info
 # Help
 docker <cmd> --help
 
+# Image ====================
+
 # List images in local cache
 # (downloaded images)
 docker image ls
+
+# List images w Image ID
+docker images -a
+
+# Remove image
+docker image rmi <imgID>
+
+# Remove image force
+docker image rmi <imgID> -f
+
+# Container ================
 
 # List active containers 
 # (running)
@@ -35,8 +48,6 @@ docker container start a83
 
 # Start a new container 
 docker container run <img_name>
-
-
 
 # Remove containers by container ID:
 # ( -f if running)
