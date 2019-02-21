@@ -1,0 +1,42 @@
+
+# ==========
+# Maven Help
+# ==========
+
+# -------------------------------------------
+
+# Create simple project
+mvn archetype:generate -DgroupId=org.sonatype.mavenbook \
+  -DartifactId=simple \
+  -Dpackage=org.sonatype.mavenbook \
+  -Dversion=1.0-SNAPSHOT
+  
+# -------------------------------------------  
+# Generates App.java
+# -------------------------------------------
+package org.sonatype.mavenbook;
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+    }
+}
+# -------------------------------------------
+
+# Now compile
+cd simple
+mvn install
+
+# -------------------------------------------
+
+# Run program
+java -cp target/simple-1.0-SNAPSHOT.jar \
+  org.sonatype.mavenbook.App
+  
+# -------------------------------------------
+  
