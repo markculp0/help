@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>curl</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<hr />
+<h2 id="curl-help">cURL help</h2>
+<hr />
+<h5 id="verbose-the-whole-page">Verbose: the whole page</h5>
+<p>curl -v http://www.msn.com</p>
+<hr />
+<h5 id="just-the-headers">Just the headers</h5>
+<p>curl -I http://www.google.com</p>
+<hr />
+<h5 id="post-data">Post data</h5>
+<p>curl -d “string” http://myform.html curl -d <span class="citation" data-cites="myfile">@myfile</span> http://myform.html curl -d ‘{ “name” : “rex” }’ http://myform.html</p>
+<hr />
+<h5 id="put-data">Put data</h5>
+<p>curl -T <file> http://mysite.html</p>
+<hr />
+<h5 id="get-ascii-file">Get ASCII file</h5>
+<p>curl “ftp://mysite.com/file.txt;type=A”</p>
+<h5 id="get-binary-file">Get binary file</h5>
+<p>curl “ftp://mysite.com/file.bin;type=I”</p>
+<h5 id="get-directory">Get directory</h5>
+<p>curl “ftp://mysite.com/dir;type=D”</p>
+<hr />
+<hr />
+</body>
+</html>
