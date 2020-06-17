@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>pandoc</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<hr />
+<h2 id="pandoc-help">Pandoc help</h2>
+<hr />
+<h5 id="standalone-pandoc-html">Standalone pandoc html</h5>
+<ul>
+<li>pandoc -s -o output.html input.txt</li>
+</ul>
+<hr />
+<h5 id="explicitly-state-fromto-formats">Explicitly state from/to formats</h5>
+<ul>
+<li>pandoc -f markdown -t html hello.md</li>
+</ul>
+<hr />
+<h5 id="create-pdf">Create PDF</h5>
+<ul>
+<li>pandoc test.txt -o test.pdf</li>
+</ul>
+<hr />
+<h5 id="translate-webpage-to-markdown">Translate webpage to markdown</h5>
+<ul>
+<li>pandoc -f html -t markdown https://www.fsf.org -o fsf.md</li>
+</ul>
+<hr />
+<hr />
+</body>
+</html>
