@@ -1,7 +1,10 @@
+---
+title: 'Pandoc help'
+---
 
 ***
 
-## Pandoc help
+[pandoc markdown](pandoc/pdmarkdown.html)
 
 ***
 
@@ -22,6 +25,11 @@
 
 ##### Translate webpage to markdown
 * pandoc -f html -t markdown https://www.fsf.org -o fsf.md
+
+***
+
+##### Convert doc to/from UTF-8 
+* iconv -t utf-8 input.txt | pandoc | iconv -f utf-8
 
 ***
 ***
