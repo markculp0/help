@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>My Help Pages</title>
+  <title>regex</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -17,19 +17,12 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">My Help Pages</h1>
+<h1 class="title">regex</h1>
 </header>
 <hr />
-<ul>
-<li><a href="7z.html">7z</a></li>
-<li><a href="apt-get.html">apt-get</a></li>
-<li><a href="conda.html">conda</a></li>
-<li><a href="curl.html">curl</a></li>
-<li><a href="dnf.html">dnf</a></li>
-<li><a href="pandoc.html">pandoc</a></li>
-<li><a href="postman.html">postman</a></li>
-<li><a href="regex.html">regex</a></li>
-</ul>
+<h5 id="create-markdown-file-link-list">Create markdown file link list</h5>
+<pre><code>        find:    (.*).html
+     replace:    * [$1]($1.html)</code></pre>
 <hr />
 <hr />
 </body>

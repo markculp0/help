@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>curl</title>
+  <title>cURL</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -16,43 +16,32 @@
   <![endif]-->
 </head>
 <body>
-<hr />
-<h2 id="curl-help">cURL help</h2>
+<header id="title-block-header">
+<h1 class="title">cURL</h1>
+</header>
 <hr />
 <h5 id="verbose-the-whole-page">Verbose: the whole page</h5>
-<ul>
-<li>curl -v http://www.msn.com</li>
-</ul>
+<pre><code>    curl -v http://www.msn.com </code></pre>
 <hr />
 <h5 id="just-the-headers">Just the headers</h5>
-<ul>
-<li>curl -I http://www.google.com</li>
-</ul>
+<pre><code>    curl -I http://www.google.com</code></pre>
 <hr />
 <h5 id="post-data">Post data</h5>
-<ul>
-<li>curl -d “string” http://myform.html</li>
-<li>curl -d <span class="citation" data-cites="myfile">@myfile</span> http://myform.html</li>
-<li>curl -d ‘{ “name” : “rex” }’ http://myform.html</li>
-</ul>
+<pre><code>    curl -d &quot;string&quot; http://myform.html
+
+    curl -d @myfile http://myform.html
+    
+    curl -d &#39;{ &quot;name&quot; : &quot;rex&quot; }&#39; http://myform.html</code></pre>
 <hr />
 <h5 id="put-data">Put data</h5>
-<ul>
-<li>curl -T <file> http://mysite.html</li>
-</ul>
+<pre><code>    curl -T &lt;file&gt; http://mysite.html</code></pre>
 <hr />
 <h5 id="get-ascii-file">Get ASCII file</h5>
-<ul>
-<li>curl “ftp://mysite.com/file.txt;type=A”</li>
-</ul>
+<pre><code>    curl &quot;ftp://mysite.com/file.txt;type=A&quot;  </code></pre>
 <h5 id="get-binary-file">Get binary file</h5>
-<ul>
-<li>curl “ftp://mysite.com/file.bin;type=I”</li>
-</ul>
+<pre><code>    curl &quot;ftp://mysite.com/file.bin;type=I&quot;</code></pre>
 <h5 id="get-directory">Get directory</h5>
-<ul>
-<li>curl “ftp://mysite.com/dir;type=D”</li>
-</ul>
+<pre><code>    curl &quot;ftp://mysite.com/dir;type=D&quot;</code></pre>
 <hr />
 <hr />
 </body>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>7zip</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">7zip</h1>
+</header>
+<hr />
+<h5 id="show-tech-info">Show tech info</h5>
+<pre><code>   7z l -slt archive.7z </code></pre>
+<hr />
+<h5 id="aes-256-encryption-with-7z">AES 256 encryption with 7z</h5>
+<pre><code>   7z a -t7z -m0=lzma2 -mx=9 -mfb=64 -md=32m -p&#39;password&#39; \
+      -ms=on -mhe=on archive.7z dir </code></pre>
+<hr />
+<h5 id="commands">Commands</h5>
+<pre><code>   a : Add files to archive
+   u : Update files to archive
+   d : Delete files from archive
+   e : Extract files from archive (without using directory names)
+   x : eXtract files with full paths
+   l : List contents of archive</code></pre>
+<hr />
+<h5 id="options">Options</h5>
+<pre><code>   -t7z                Use a 7z archive
+   -m0=lzma2           Use lzma2 method
+   -mx=9               Use the &#39;9&#39; level of compression = Ultra
+   -mfb=64             Use number of fast bytes for LZMA = 64
+   -md=32m             Use a dictionary size = 32 megabytes
+   -ms=on              Solid archive = on
+   -mhe=on             7z format only : enables or disables archive header encryption
+   -p{Password}        Add a password</code></pre>
+<hr />
+<hr />
+</body>
+</html>

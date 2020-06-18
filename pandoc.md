@@ -1,5 +1,6 @@
 ---
-title: 'Pandoc help'
+title: 'Pandoc'
+lang: en
 ---
 
 ***
@@ -9,27 +10,44 @@ title: 'Pandoc help'
 ***
 
 ##### Standalone pandoc html
-* pandoc -s -o output.html input.txt
+```
+    pandoc -s -o output.html input.txt
+```
 
 ***
 
 ##### Explicitly state from/to formats
-* pandoc -f markdown -t html hello.md
+```
+    pandoc -f markdown -t html hello.md
+```
+
+***
+
+##### Generate table of contents; use CSS stylesheet 
+```
+    pandoc -s --toc -c pandoc.css mypage.md -o mypage.html
+```
 
 ***
 
 ##### Create PDF
-* pandoc test.txt -o test.pdf
+```
+    pandoc test.txt -o test.pdf
+```
 
 ***
 
 ##### Translate webpage to markdown
-* pandoc -f html -t markdown https://www.fsf.org -o fsf.md
+```
+    pandoc -f html -t markdown https://www.fsf.org -o fsf.md
+```
 
 ***
 
 ##### Convert doc to/from UTF-8 
-* iconv -t utf-8 input.txt | pandoc | iconv -f utf-8
+```
+    iconv -t utf-8 input.txt | pandoc | iconv -f utf-8
+```
 
 ***
 ***

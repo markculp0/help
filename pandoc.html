@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Pandoc help</title>
+  <title>Pandoc</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -17,35 +17,28 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Pandoc help</h1>
+<h1 class="title">Pandoc</h1>
 </header>
 <hr />
 <p><a href="pandoc/pdmarkdown.html">pandoc markdown</a></p>
 <hr />
 <h5 id="standalone-pandoc-html">Standalone pandoc html</h5>
-<ul>
-<li>pandoc -s -o output.html input.txt</li>
-</ul>
+<pre><code>    pandoc -s -o output.html input.txt</code></pre>
 <hr />
 <h5 id="explicitly-state-fromto-formats">Explicitly state from/to formats</h5>
-<ul>
-<li>pandoc -f markdown -t html hello.md</li>
-</ul>
+<pre><code>    pandoc -f markdown -t html hello.md</code></pre>
+<hr />
+<h5 id="generate-table-of-contents-use-css-stylesheet">Generate table of contents; use CSS stylesheet</h5>
+<pre><code>    pandoc -s --toc -c pandoc.css mypage.md -o mypage.html</code></pre>
 <hr />
 <h5 id="create-pdf">Create PDF</h5>
-<ul>
-<li>pandoc test.txt -o test.pdf</li>
-</ul>
+<pre><code>    pandoc test.txt -o test.pdf</code></pre>
 <hr />
 <h5 id="translate-webpage-to-markdown">Translate webpage to markdown</h5>
-<ul>
-<li>pandoc -f html -t markdown https://www.fsf.org -o fsf.md</li>
-</ul>
+<pre><code>    pandoc -f html -t markdown https://www.fsf.org -o fsf.md</code></pre>
 <hr />
 <h5 id="convert-doc-tofrom-utf-8">Convert doc to/from UTF-8</h5>
-<ul>
-<li>iconv -t utf-8 input.txt | pandoc | iconv -f utf-8</li>
-</ul>
+<pre><code>    iconv -t utf-8 input.txt | pandoc | iconv -f utf-8</code></pre>
 <hr />
 <hr />
 </body>

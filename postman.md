@@ -1,23 +1,28 @@
-
-***
-
-## Postman
+---
+title: Postman
+lang: en
+---
 
 ***
 
 #### Linux Fedora install
-* sudo tar xvzf postman-linux-x64.tar.gz -C /opt
+```
+  sudo tar xvzf postman-linux-x64.tar.gz -C /opt
+```
 
 ***
 
 #### Create symbolic link, i.e., ln -s &lt;path&gt; &lt;lnk&gt;
-* sudo ln -s /opt/Postman/Postman /usr/bin/postman
-* sudo ln -s /opt/rstudio-1.2.5001/bin/rstudio /usr/local/bin/rs
+```
+  sudo ln -s /opt/Postman/Postman /usr/bin/postman
+
+  sudo ln -s /opt/rstudio-1.2.5001/bin/rstudio /usr/local/bin/rs
+```
 
 ***
 
 #### Postman application icon
-<pre>
+```
   cat << EOF > ~/.local/share/applications/postman2.desktop
   [Desktop Entry]
   Name=Postman
@@ -31,7 +36,10 @@
   Icon=/opt/Postman/app/resources/app/assets/icon.png
   Categories=Development;Utilities;
   EOF
-</pre>
+```
+
+***
+***
 
 
 ***
