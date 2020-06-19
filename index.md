@@ -10,6 +10,7 @@ lang: en
 * [conda](conda.html)
 * [curl](curl.html)
 * [dnf](dnf.html)
+* [docker](docker.html)
 * [pandoc](pandoc.html)
 * [postman](postman.html)
 * [regex](regex.html)

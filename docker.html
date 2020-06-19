@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Docker</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Docker</h1>
+</header>
+<hr />
+<h3 id="get-information">Get information</h3>
+<hr />
+<h5 id="check-client-server">Check client &amp; server</h5>
+<pre><code>  docker version</code></pre>
+<h5 id="more-info">More info</h5>
+<pre><code>  docker info</code></pre>
+<h5 id="help">Help</h5>
+<pre><code>  docker &lt;cmd&gt; --help</code></pre>
+<hr />
+<h3 id="images">Images</h3>
+<hr />
+<h5 id="list-images-in-local-cache">List images in local cache</h5>
+<pre><code>  docker image ls</code></pre>
+<h5 id="list-images-w-image-id">List images w Image ID</h5>
+<pre><code>  docker images -a</code></pre>
+<h5 id="remove-image">Remove image</h5>
+<pre><code>  docker image rmi &lt;imgID&gt;</code></pre>
+<h5 id="remove-image-force">Remove image force</h5>
+<pre><code>  docker image rmi &lt;imgID&gt; -f</code></pre>
+<hr />
+<h3 id="containers">Containers</h3>
+<hr />
+<h5 id="list-active-containers">List active containers</h5>
+<pre><code>  docker container ls</code></pre>
+<h5 id="stop-running-container-by-container-id-frndly-name">Stop running container by container id# / frndly name</h5>
+<pre><code>  docker container stop a83
+  
+  docker container stop angry_austin</code></pre>
+<h5 id="list-inactive-containers">List inactive containers</h5>
+<pre><code>  docker container ls -a</code></pre>
+<h5 id="start-a-stopped-container-by-container-id">Start a stopped container by container id</h5>
+<pre><code>  docker container start a83</code></pre>
+<h5 id="start-a-new-container">Start a new container</h5>
+<pre><code>  docker container run &lt;img_name&gt;</code></pre>
+<h5 id="remove-containers-by-container-id--f-if-running">Remove containers by container ID ( -f if running)</h5>
+<pre><code>  docker container rm 72e d38 305</code></pre>
+<h5 id="named-volume--v-mapped-container-volume">Named Volume -v : Mapped Container Volume</h5>
+<pre><code>  docker container run -d --name psql \
+      -v psql:/var/lib/postgresql/data postgres:9.6.2</code></pre>
+<hr />
+<hr />
+</body>
+</html>
