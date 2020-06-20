@@ -13,7 +13,10 @@ lang: en
 * [docker](docker.html)
 * [pandoc](pandoc.html)
 * [postman](postman.html)
+* [r](r.html)
 * [regex](regex.html)
 
+***
+[My Help Pages](https://markculp0.github.io/help/)
 ***
 ***
