@@ -23,13 +23,18 @@
 <p><a href="pandoc/pdmarkdown.html">pandoc markdown</a></p>
 <hr />
 <h5 id="standalone-pandoc-html">Standalone pandoc html</h5>
-<pre><code>    pandoc -s -o output.html input.txt</code></pre>
+<pre><code>    pandoc -s -o output.html input.md</code></pre>
 <hr />
 <h5 id="explicitly-state-fromto-formats">Explicitly state from/to formats</h5>
 <pre><code>    pandoc -f markdown -t html hello.md</code></pre>
 <hr />
 <h5 id="generate-table-of-contents-use-css-stylesheet">Generate table of contents; use CSS stylesheet</h5>
 <pre><code>    pandoc -s --toc -c pandoc.css mypage.md -o mypage.html</code></pre>
+<hr />
+<h5 id="display-template-add-own-template">Display template, add own template</h5>
+<pre><code>    pandoc -D html5
+    
+    pandoc --template mytemp.html </code></pre>
 <hr />
 <h5 id="create-pdf">Create PDF</h5>
 <pre><code>    pandoc test.txt -o test.pdf</code></pre>

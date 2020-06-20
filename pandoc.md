@@ -11,7 +11,7 @@ lang: en
 
 ##### Standalone pandoc html
 ```
-    pandoc -s -o output.html input.txt
+    pandoc -s -o output.html input.md
 ```
 
 ***
@@ -26,6 +26,15 @@ lang: en
 ##### Generate table of contents; use CSS stylesheet 
 ```
     pandoc -s --toc -c pandoc.css mypage.md -o mypage.html
+```
+
+***
+
+##### Display template, add own template
+```
+    pandoc -D html5
+    
+    pandoc --template mytemp.html -s -o output.html input.md
 ```
 
 ***
