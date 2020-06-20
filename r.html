@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>R</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">R</h1>
+</header>
+<hr />
+<p><a href="r/rPlumber.html">R Plumber</a> | <a href="r/rPackage.html">R Packages</a></p>
+<hr />
+<h5 id="factors-factor-to-original-type">Factors: factor to original type</h5>
+<pre><code>  val &lt;- levels(val)[val]</code></pre>
+<hr />
+<h5 id="dates-character-to-date">Dates: character to date</h5>
+<pre><code>  library(lubridate)
+  
+  val &lt;- mdy(val)   
+  val &lt;- ydm(val)
+  val &lt;- as.Date(val) </code></pre>
+<hr />
+<h5 id="dates-useful-functions">Dates: useful functions</h5>
+<pre><code>  weekdays(val) 
+  julian(val)
+  months(val)
+  lubridate::wday(date1)
+  strptime() 
+  as.POSIXlt
+  as.POSIXct</code></pre>
+<hr />
+<h5 id="dataframes-read-csv-create-column-headings">Dataframes: read CSV, create column headings</h5>
+<pre><code>  df &lt;- read.csv(&quot;sampleData.csv&quot;, header = F, sep = &#39;,&#39;, 
+    skip = 1, fill = T, comment.char = &quot;&quot;, quote = &quot;&quot;)
+  
+  h1 &lt;- readLines(&quot;sampleData.csv&quot;,1)
+  h1 &lt;- strsplit(h1, &#39;,&#39;, fixed = T)
+  names(df) &lt;- make.names(h1[[1]])</code></pre>
+<hr />
+<hr />
+</body>
+</html>

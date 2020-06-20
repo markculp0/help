@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>R Package Development</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">R Package Development</h1>
+</header>
+<hr />
+<h5 id="required-packaages-for-development">Required packaages for development</h5>
+<pre><code>  install.packages(c(&quot;devtools&quot;, &quot;roxygen2&quot;, &quot;testthat&quot;, &quot;knitr&quot;))</code></pre>
+<hr />
+<h5 id="create-package-framework">Create package framework</h5>
+<pre><code>  devtools::create(&quot;~/path/pkgName&quot;)
+  devtools::create_package(&quot;~/path/pkgName&quot;)
+
+  
+  devtools::document() 
+  (or Ctl-Shft-D)</code></pre>
+<hr />
+<h5 id="create-a-bundle-ie-zip-tar.gz">Create a bundle, ie zip, tar.gz</h5>
+<pre><code>  devtools::build()</code></pre>
+<hr />
+<h5 id="create-a-binary-package-os-specific">Create a binary package, OS specific</h5>
+<pre><code>  devtools::build(binary = TRUE)</code></pre>
+<hr />
+<h5 id="load-library-check-install">Load library; check install</h5>
+<pre><code>  library(devtools)
+  has_devel()</code></pre>
+<hr />
+<h5 id="attach-a-package">Attach a package</h5>
+<pre><code>  devtools::load_all()
+  
+  devtools::test()</code></pre>
+<hr />
+<h5 id="use-a-package">Use a package</h5>
+<pre><code>  devtools::use_package(&quot;lubridate&quot;)</code></pre>
+<hr />
+<h5 id="store-data-in-rsysdata.rda-file-for-internal-use.">Store data in “R/sysdata.rda” file for internal use.</h5>
+<pre><code>  devtools::use_data(object, &lt;pkg&gt;, internal = TRUE)
+  
+  devtools::use_data_raw()
+  
+  devtools::use_rcpp()</code></pre>
+<hr />
+<h5 id="documenting-an-r-function">Documenting an R function</h5>
+<pre><code>  #&#39; Add together two numbers. 
+  #&#39;
+  #&#39; \code{add} returns the sum of all the values present in its arguments.
+  #&#39; 
+  #&#39; @param x A number. 
+  #&#39; @param y A number. 
+  #&#39; @return The sum of \code{x} and \code{y}. 
+  #&#39; @examples #&#39; add(1, 1) 
+  #&#39; add(10, 1) 
+  add &lt;- function(x, y) {
+    x + y 
+  }</code></pre>
+<hr />
+<hr />
+</body>
+</html>
