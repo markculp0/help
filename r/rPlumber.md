@@ -20,6 +20,10 @@ lang: en
   
   docker run --rm -p 8000:8000 trestletech/plumber \
       /usr/local/lib/R/site-library/plumber/examples/04-mean-sum/plumber.R
+      
+  then:
+      
+  curl localhost:8000/mean
 ```
 
 ***
@@ -52,7 +56,7 @@ lang: en
 
 ##### Build the image
 ```
-  docker run --rm -v pwd :/app myCustomDocker
+  docker run --rm -v `pwd`:/app myCustomDocker .
 ```
 
 ***

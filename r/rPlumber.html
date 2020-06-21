@@ -31,7 +31,11 @@
   same as:
   
   docker run --rm -p 8000:8000 trestletech/plumber \
-      /usr/local/lib/R/site-library/plumber/examples/04-mean-sum/plumber.R</code></pre>
+      /usr/local/lib/R/site-library/plumber/examples/04-mean-sum/plumber.R
+      
+  then:
+      
+  curl localhost:8000/mean</code></pre>
 <hr />
 <h5 id="run-my-own-file-api.r">Run my own file: api.R</h5>
 <pre><code>  docker run --rm -p 8000:8000 -v `pwd`/api.R:/plumber.R trestletech/plumber /plumber.R</code></pre>
@@ -48,7 +52,7 @@
   CMD [&quot;/app/plumber.R&quot;]</code></pre>
 <hr />
 <h5 id="build-the-image">Build the image</h5>
-<pre><code>  docker run --rm -v pwd :/app myCustomDocker</code></pre>
+<pre><code>  docker run --rm -v `pwd`:/app myCustomDocker .</code></pre>
 <hr />
 <h5 id="auto-run-on-port-1234-on-restart">Auto-run on port 1234 on restart</h5>
 <pre><code>  docker run -p 1234:8000 -d myCustomDocker</code></pre>
