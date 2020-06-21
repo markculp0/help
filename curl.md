@@ -26,6 +26,8 @@ lang: en
     curl -d @myfile http://myform.html
     
     curl -d '{ "name" : "rex" }' http://myform.html
+    
+    curl --data "a=2&b=3" http://localhost:8000/sum
 ```
 
 ***
