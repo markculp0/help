@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>R Plumber and Docker</title>
+  <title>R Plumber</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -19,45 +19,13 @@
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">R Plumber and Docker</h1>
+<h1 class="title">R Plumber</h1>
 </header>
 <hr />
-<h5 id="use-jeff-allens-docker-image">Use Jeff Allen’s Docker image</h5>
-<pre><code>  docker pull trestletech/plumber</code></pre>
-<hr />
-<h5 id="run-first-example">Run first example</h5>
-<pre><code>  docker run --rm -p 8000:8000 trestletech/plumber
-  
-  same as:
-  
-  docker run --rm -p 8000:8000 trestletech/plumber \
-      /usr/local/lib/R/site-library/plumber/examples/04-mean-sum/plumber.R
-      
-  then:
-      
-  curl localhost:8000/mean</code></pre>
-<hr />
-<h5 id="run-my-own-file-api.r">Run my own file: api.R</h5>
-<pre><code>  docker run --rm -p 8000:8000 -v `pwd`/api.R:/plumber.R trestletech/plumber /plumber.R</code></pre>
-<hr />
-<h5 id="get-bash-shell">Get Bash shell</h5>
-<pre><code>  docker run -it --rm --entrypoint /bin/bash trestletech/plumber</code></pre>
-<hr />
-<h5 id="customize-with-dockerfile">Customize with Dockerfile</h5>
-<pre><code>  FROM trestletech/plumber
-  MAINTAINER Docker User &lt;docker@user.org&gt;
-  
-  RUN R -e &quot;install.packages(&#39;broom&#39;)&quot;
-  
-  CMD [&quot;/app/plumber.R&quot;]</code></pre>
-<hr />
-<h5 id="build-the-image">Build the image</h5>
-<pre><code>  docker run --rm -v `pwd`:/app myCustomDocker .</code></pre>
-<hr />
-<h5 id="auto-run-on-port-1234-on-restart">Auto-run on port 1234 on restart</h5>
-<pre><code>  docker run -p 1234:8000 -d myCustomDocker</code></pre>
-<hr />
-<p><a href="https://www.rplumber.io/docs/hosting.html">Source of content: Jeff Allen | Trestletech | Creating API’s in R Plumber | Chapter 7 Hosting</a></p>
+<ul>
+<li><a href="rPlumberDocker.html">R Plumber and Docker</a></li>
+<li><a href="rPlumberSecurity.html">R Plumber Security</a></li>
+</ul>
 <hr />
 <hr />
 </body>

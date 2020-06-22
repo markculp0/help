@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>R Plumber Security</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">R Plumber Security</h1>
+</header>
+<hr />
+<h5 id="prevent-denial-of-service-limit-argument-size">Prevent Denial Of Service: Limit argument size</h5>
+<pre><code>  function(pts=10) {
+    if (pts &gt; 1000){
+      stop(&quot;pts must be &lt; 1,000&quot;)
+    }
+  
+    plot(1:pts)
+  }</code></pre>
+<hr />
+<h5 id="sanitize-user-input-strip-non-word-characters">Sanitize user input: Strip “non-word” characters</h5>
+<pre><code>  function(file) {
+    sanitizedFile &lt;- gsub(&quot;\\W&quot;, &quot;&quot;, file)
+  
+    path &lt;- file.path(&quot;./datasets&quot;, sanitizedFile)
+    readLines(path)
+  }</code></pre>
+<hr />
+<h5 id="avoid-sql-injection-escape-user-input">Avoid SQL injection: Escape user input</h5>
+<pre><code>  safeCharVector &lt;- htmltools::html_escape(charVector)
+</code></pre>
+<hr />
+<h5 id="avoid-cross-origin-resource-sharing-cors-the-api-endpoint-forbids-cross-domain-requests-by-default">Avoid Cross-Origin Resource Sharing (CORS): The API endpoint forbids “cross-domain” requests by default</h5>
+<ul>
+<li><h5 id="to-allow-them">To allow them:</h5></li>
+</ul>
+<pre><code>  #* @filter cors
+  cors &lt;- function(res) {
+      res$setHeader(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;)
+      plumber::forward()
+  }
+</code></pre>
+<ul>
+<li><h5 id="to-disable-for-some">To disable for some:</h5></li>
+</ul>
+<pre><code>  #* @preempt cors
+  #* @get /sub
+  cors_disabled &lt;- function(a, b){
+    as.numeric(a) - as.numeric(b)
+  }</code></pre>
+<hr />
+<p><a href="https://www.rplumber.io/docs/security.html">Source of content: Jeff Allen | Trestletech | Creating API’s in R Plumber | Chapter 6 Security</a></p>
+<hr />
+<hr />
+</body>
+</html>
