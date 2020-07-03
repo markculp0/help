@@ -15,5 +15,10 @@ lang: en
   /etc/nginx/nginx.conf
 ```
 
+##### Apply changes to config
+```
+  nginx -s reload
+```  
+
 ***
 ***
