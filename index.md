@@ -6,6 +6,7 @@ lang: en
 ***
 
 * [7z](7z.html)
+* [angDeploy](angDeploy.html)
 * [apt-get](apt-get.html)
 * [conda](conda.html)
 * [curl](curl.html)
@@ -16,6 +17,7 @@ lang: en
 * [postman](postman.html)
 * [r](r.html)
 * [regex](regex.html)
+* [ssl_tls](ssl_tls.html)
 
 ***
 [My Help Pages](https://markculp0.github.io/help/)

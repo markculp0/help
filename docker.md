@@ -9,6 +9,13 @@ lang: en
 
 ***
 
+##### Fedora: start Docker
+```
+  sudo systemctl start docker
+  
+  sudo systemctl restart docker
+```
+
 ##### Check client & server
 ```
   docker version

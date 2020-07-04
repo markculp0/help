@@ -13,11 +13,13 @@ lang: en
 ##### Check status
 ```
   sudo systemctl status nginx
-```
+``` 
 
 ##### Content served
 ```
   /var/www/html
+  
+  /usr/share/nginx/html
 ```
 
 ##### Config file
@@ -31,11 +33,13 @@ lang: en
   /var/log/nginx/error.log
 ```
 
-##### Apply config, graceful shutdown
+##### Apply config, graceful shutdown, immediate shutdown
 ```
   nginx -s reload
   
   nginx -s quit
+  
+  nginx -s stop
   
 ```  
 
