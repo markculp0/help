@@ -1,0 +1,64 @@
+
+### fdisk ==========================
+
+#### List disks 
+fdisk -l
+
+### dd =============================
+
+#### Zero-fill the disk by writing a zero byte to every addressable location 
+#### on the disk using the /dev/zero stream.
+dd if=/dev/zero of=/dev/sdX bs=4096 status=progress
+
+#### Use the /dev/urandom stream
+dd if=/dev/urandom of=/dev/sdX bs=4096 status=progress
+
+### shred ==========================
+
+#### Whole device
+shred -v /dev/sdX
+
+#### First partition
+shred -v /dev/sdX1
+
+#### One pass with entropy from /dev/urandom
+shred --verbose --random-source=/dev/urandom -n1 /dev/sdX
+ 
+### Format disk ===================
+ 
+fdisk /dev/sdb
+
+M – Print help
+P – Prints partition table
+N - Create new partition
+D — Delete a partition
+Q — Quit changes without saving
+W — Write a new partition table and exit
+
+#### Format with ext4
+mkfs.ext4 /dev/sdb1
+
+#### Format with fat32
+mkfs.vfat /dev/sdb1
+ 
+#### Create mnt pt; mount disk
+mkdir /disk1
+mount /dev/sdb1 /disk1
+df -H 
+
+#### Update /etc/fstab
+vi /etc/fstab
+
+/dev/sdb1 /disk1 ext3 defaults 1 2
+
+#### Label the partition 
+e2label /dev/sdb1 /programs
+
+
+
+
+
+
+
+
+
