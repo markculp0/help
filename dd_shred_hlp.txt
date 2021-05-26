@@ -25,15 +25,17 @@ shred -v /dev/sdX1
 shred --verbose --random-source=/dev/urandom -n1 /dev/sdX
  
 ### Format disk ===================
- 
+
+* Create partition and write it
+
 fdisk /dev/sdb
 
-M – Print help
-P – Prints partition table
+M - Print help
+P - Prints partition table
 N - Create new partition
-D — Delete a partition
-Q — Quit changes without saving
-W — Write a new partition table and exit
+D - Delete a partition
+Q - Quit changes without saving
+W - Write a new partition table and exit
 
 #### Format with ext4
 mkfs.ext4 /dev/sdb1
