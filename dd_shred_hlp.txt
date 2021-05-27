@@ -26,7 +26,7 @@ shred --verbose --random-source=/dev/urandom -n1 /dev/sdX
  
 ### Format disk ===================
 
-* Create partition and write it
+* Create partition (n) and write it (w)
 
 fdisk /dev/sdb
 
