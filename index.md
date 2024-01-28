@@ -16,6 +16,7 @@ lang: en
 * [pandoc](pandoc.html)
 * [postman](postman.html)
 * [r](r.html)
+* [ripgrep](ripgrep.html)
 * [regex](regex.html)
 * [ssl_tls](ssl_tls.html)
 
