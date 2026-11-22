@@ -12,6 +12,7 @@ lang: en
 * [curl](curl.html)
 * [dnf](dnf.html)
 * [docker](docker.html)
+* [git](git.html)
 * [nginx](nginx.html)
 * [pandoc](pandoc.html)
 * [postman](postman.html)

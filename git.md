@@ -1,0 +1,324 @@
+---
+title: "git Help"
+lang: en
+---
+
+***
+
+#### Setup repo on server
+
+***
+
+
+##### On server
+
+```
+cd /srv/git
+sudo mkdir project.git
+cd project.git
+sudo git init --bare
+sudo chown -R git:git project.git/
+sudo chmod -R 775  project.git/
+
+```
+
+
+##### On host
+
+```
+cd myproject
+git init
+git add .
+git commit -m 'initial commit'
+git remote add origin git@gitserver:/srv/git/project.git
+git push origin master
+
+```
+
+##### On another host
+
+```
+git clone git@gitserver:/srv/git/project.git
+cd project
+vim README
+git commit -am 'add README file'
+git push origin master
+
+```
+
+***
+
+#### Main update cmds
+
+***
+
+#### ------Commit-Push---------
+
+```
+git init
+git add -A
+git commit -m "changes"
+git push -u origin master
+
+```
+
+#### ------Pull Project--------
+
+```
+git init
+git remote add origin https://github.com/markculp0/<repo>.git
+git fetch
+git pull origin master
+
+```
+
+#### Remove file from repo
+
+```
+git rm --cached <filename>
+
+```
+
+#### Overwrite local repo
+
+```
+git fetch --all
+
+```
+
+#### Reset local repo fm origin (cld lose changes!!!)
+
+```
+git reset --hard origin/master
+
+```
+
+#### Reverses hard reset
+
+```
+git reset --hard ORIG_HEAD
+
+```
+
+#### Reset a merge
+
+```
+git merge --abort
+
+```
+
+#### Repo setup
+
+```
+  git config --global user.name "Your Name Here"
+
+  git config --global user.email "Your Email Here"
+
+  git config --list
+
+  mkdir test-repo; cd test-repo
+
+  git init 
+
+  git remote add origin https://github.com/<username>/test-repo.git
+  
+```  
+
+
+#### add files, commit, push
+
+```
+  git add -A			// add all files in cur dir
+
+  git commit -m "file1 changed"
+
+  git push origin master		// push change
+  
+```  
+
+#### fetch, pull
+
+```
+  git fetch origin master
+
+  git pull origin master
+
+  ## set local master to track github master
+  git branch --set-upstream-to=origin/master master
+
+```
+
+
+#### Branching workflows
+
+
+```
+# Create a new branch
+git branch test
+
+# Switch to branch
+git checkout test
+
+# Merge branch to master
+git checkout master
+git merge test
+
+# Shortcut: Create & Switch
+git checkout -b test2
+
+# Branch history
+git log
+
+# List branches & status
+git branch -vv
+
+# Delete branch (-D force)
+git branch -d test2
+
+# View differences not staged
+git diff 
+
+# Show remote branches
+git remote -v 
+
+# Inspect specific remote 
+git remote show origin 
+
+# Track remote branch
+git checkout --track origin/test3
+
+```
+
+***
+
+#### pages.github.com
+
+1. goto repo
+2. click "Settings"
+3. under "Github Pages" select branch of project to publish.
+
+* https://markculp0.github.io/jsHelp/
+
+
+***
+
+#### Create a Projects page:
+
+```
+## Create a fresh clone ( a new orphan branch )
+git clone https://github.com/markculp0/repo.git
+
+# Switch to clone dir
+cd repo
+
+## Chk if repo has master branch
+git branch
+
+## If not, create one (won't appear until 1st commit)
+git checkout --orphan master
+
+## Once master branch created, rm all files fm dir and index
+git rm -rf .
+
+## Add content and push (must verify email addr)
+echo "My Page" > index.html
+git add index.html
+git commit -a -m "First pages commit"
+git push origin master
+
+## GH Pages site will be avail at:
+https://<username>.github.io/<projName>
+
+https://markculp0.github.io/weightLiftHAR
+https://markculp0.github.io/weightLiftHAR/weightLiftHAR.html
+
+```
+
+***
+
+#### Create a gh-pages branch
+
+* Can publish from /docs folder on your master branch
+
+* Project Pages are kept in same repo as their project
+
+* URL will be `https://<username>.github.io/<projName>`
+
+* git branch gh-pages
+
+***
+
+#### Create a root gh-pages branch
+
+* This creates a "root branch", which is one without a previous history ()orphan.
+
+***
+
+```
+cd /path/to/repo-name
+git symbolic-ref HEAD refs/heads/gh-pages
+rm .git/index
+git clean -fdx
+echo "My GitHub Page" > index.html
+git add .
+git commit -a -m "First pages commit"
+git push origin gh-pages
+
+```
+
+***
+
+#### Rename remote 
+
+
+* git remote set-url origin `https://github.com/<username>/test-repo.git`
+
+***
+  
+#### Pushing to Github with ssh-authentication
+
+***
+
+1. Set username and email (if you did not do that before)
+
+```
+    git config --global user.name "your_username"
+    git config --global user.email "your_email@example.com"
+
+```
+
+2. Create SSH key
+
+```
+    ssh-keygen -t rsa -C "your_email@example.com" 
+
+```
+
+* In RStudio, go to menu `Tools / Global options / Git SVN / View public key` and copy the key to your Github account setting (`Edit profile / SSH keys / Add SSH key`).
+
+* To check that ssh-authentication works, try to run
+
+```
+    ssh -T git@github.com
+
+```
+
+3. Change `remote.origin.url` from HTTPS to HTTP 
+
+```
+    git config remote.origin.url git@github.com:your_username/your_project.git
+
+```
+
+***
+
+#### Update Git for Windows
+
+```
+    git update-git-for-windows 
+
+```
+
+
+***
+***
